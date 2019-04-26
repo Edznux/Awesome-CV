@@ -227,6 +227,10 @@
 \newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \newcommand*{\skillsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\color{text} #1}}
 
+% For elements of certifications
+\newcommand*{\cvcertificationnamestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\cvcertificationdatestyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\color{text} #1}}
+
 % For elements of the cover letter
 \newcommand*{\lettersectionstyle}[1]{{\fontsize{14pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
 \newcommand*{\recipientaddressstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{graytext} #1}}
@@ -670,6 +674,24 @@
 % Usage: \cvskill{<type>}{<skillset>}
 \newcommand*{\cvskill}[2]{%
 	\skilltypestyle{#1} & \skillsetstyle{#2} \\
+}
+
+% Define an environment for cvcertification
+\newenvironment{cvcertifications}{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-2.0mm}
+  \begin{center}
+    \setlength\tabcolsep{1ex}
+    \setlength{\extrarowheight}{0pt}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r L{\textwidth * \real{0.95}}}
+}{%
+    \end{tabular*}
+  \end{center}
+}
+% Define a line of cv information(certification)
+% Usage: \cvcertification{<Name>}{<category>}{year}
+\newcommand*{\cvcertification}[2]{%
+	\cvcertificationnamestyle{#1} & \cvcertificationdatestyle{#2} \\
 }
 
 % Define an environment for cvitems(for cventry)
